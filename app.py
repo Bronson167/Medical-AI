@@ -38,7 +38,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_pinecone import PineconeVectorStore
 
-from src.helper import download_hugging_face_embeddings  # Note: corrigé embeddingsz -> embeddings
+# from src.helper import download_hugging_face_embeddings  # Note: corrigé embeddingsz -> embeddings
 
 from langchain.memory import ConversationBufferMemory
 from langdetect import detect
@@ -61,13 +61,13 @@ os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 # =============================
 # Préparer les embeddings et le retriever
 # =============================
-embeddings = download_hugging_face_embeddings()
+# embeddings = download_hugging_face_embeddings()
 index_name = "sanitask"
 
-docsearch = PineconeVectorStore.from_existing_index(
-    index_name=index_name,
-    embedding=embeddings
-)
+# docsearch = PineconeVectorStore.from_existing_index(
+#     index_name=index_name,
+#     embedding=embeddings
+# )
 
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 5})
 
